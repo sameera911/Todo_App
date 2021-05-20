@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+html,body{
+    height: auto;
+    /* background-color: black; */
+}
+
+body{
+    background-image: url(./assets/bg4.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-y: auto !important;
+    color: antiquewhite
+}

@@ -1,0 +1,149 @@
+<!-- <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+    <div class="container-fluid">
+
+        <a routerLink="register"><h5 style="color: white; font-weight: bold;">Register</h5></a>&nbsp;&nbsp;&nbsp;<a routerLink=""><h5 style="color: white; font-weight: bold; float: left;">Login</h5></a>
+    </div>
+</nav> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <div class="container-fluid">
+     
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a (click)="gotoRegister()" style="cursor: pointer;"><h5 style="color: white; font-weight: bold;">Register</h5></a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a routerLink=""><h5 style="color: white; font-weight: bold; float: left;">Login</h5></a>
+         
+        </div>
+      </div>
+    </div>
+  </nav>
+<div class="container cont">
+    <h3>Welcome {{Name}}</h3>
+    <div class="row">
+        <div class="col-lg-6 col-sm-12">
+            <h3>Todo</h3>
+            <div class="container">
+                <div class="row">
+                    <div class="col  column">
+
+
+                        <table class="table table-sm table-bordered text-center" style="color: rgb(255, 255, 255);">
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        order
+                                    </th>
+                                    <th scope="col">
+                                        Task
+                                    </th>
+                                    <th scope="col">
+                                        Remove
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody style="min-height: 100px;" cdkDropList #todoList="cdkDropList" [cdkDropListConnectedTo]="[doneList]"
+                            [cdkDropListData]="todo" (cdkDropListDropped)="drag($event)">
+                                <tr cdkDrag *ngFor="let item of todo;" >                            
+                                  <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+                                    <td>{{item.order}}</td>
+                                    <td>{{item.task}}</td>
+                                                            
+                                    <!-- Preview -->
+                                    <div *cdkDragPreview matchSize="true" class="container dragdrop-placeholder">
+                                        {{item.task}}
+                                        
+                                    </div>
+                                  <td>  <i class="fa fa-trash" aria-hidden="true" (click)="removeItem(item.task)"></i></td>
+                                 
+                                </tr>
+                                <tr *ngIf="todo.length === 0">
+                                    <td  style="background-color: red;opacity: 0; height: 30px;"></td>
+                                    </tr>
+                            </tbody>
+                        </table>
+
+
+                        <!-- <div cdkDropList #todoList="cdkDropList" [cdkDropListConnectedTo]="[doneList]"
+                            [cdkDropListData]="todo"  (cdkDropListDropped)="drag($event)">
+                            <div  *ngFor="let item of todo" cdkDrag>
+                                <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+                                {{item._id}}&nbsp;&nbsp;&nbsp;{{item.task}}</div>
+                        </div> -->
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-sm-12">
+            <h3>Done</h3>
+            <div class="container">
+                <div class="row">
+                    <div class="col  column">
+
+
+                        <table class="table table-sm table-bordered text-center" style="color: rgb(255, 255, 255);">
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        order
+                                    </th>
+                                    <th scope="col">
+                                        Task
+                                    </th>
+                                    <th scope="col">
+                                        Remove
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody style="min-height: 100px;" cdkDropList #doneList="cdkDropList" [cdkDropListConnectedTo]="[todoList]"
+                            [cdkDropListData]="done" (cdkDropListDropped)="drag($event)">
+                                <tr cdkDrag *ngFor="let item of done;" >
+                                  <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+                                    <td>{{item.order}}</td>
+                                    <td>{{item.task}}</td>
+                                                            
+                                    <!-- Preview -->
+                                    <div *cdkDragPreview matchSize="true" class="container dragdrop-placeholder">
+                                        {{item.task}}
+                                    </div>
+                                   <td> <i class="fa fa-trash" aria-hidden="true" (click)="removeItem(item.task)"></i></td>
+                                   
+                                </tr>
+                                <tr *ngIf="done.length === 0">
+                                <td  style="background-color: red;opacity: 0; height: 30px; border: rgba(21, 9, 48, 0);"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+
+                        <!-- <div cdkDropList #doneList="cdkDropList" [cdkDropListConnectedTo]="[todoList]"
+                            [cdkDropListData]="done"  class="example-list" (cdkDropListDropped)="drag($event)">
+                            <div  *ngFor="let item of done" cdkDrag>
+                            <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+                            {{item._id}}&nbsp;&nbsp;&nbsp;{{item.task}}</div>
+                        </div> -->
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container cont2">
+    <div class="row">
+        <div class="col-lg-4 col-sm-12 col-xs-12"></div>
+        <div class="col-lg-4 col-sm-12 col-xs-12">
+            <div>
+                <form #addForm="ngForm" (ngSubmit)="addTask(addForm.value)">
+                    <h3 style="text-align: center; margin-bottom: 20px;">Add new task</h3>
+                    Enter task:<input type="text" name="task" ngModel>
+                    <button type="submit">Add</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-12 col-xs-12"></div>
+    </div>
+</div>

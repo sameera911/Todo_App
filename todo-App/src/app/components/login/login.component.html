@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+    <div class="container-fluid">
+
+        <a routerLink="register"><h5 style="color: white; font-weight: bold;">Register</h5></a>
+    </div>
+</nav>
+
+<div class="contact-form">
+    <img alt="" class="avatar" src="https://i.postimg.cc/zDyt7KCv/a1.jpg">
+    <h2>Login Form</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <p>Username</p><input placeholder="Enter Username" type="text" formControlName="userName" name="userName">
+        <div *ngIf="(this.loginForm.get('userName')?.touched||this.loginForm.get('userName')?.dirty)&&this.loginForm.get('userName')?.errors" class="valerror form-text" style="color: red;">Invalid username</div>
+        <p>Password</p><input placeholder="Enter Password" type="password" formControlName="password" name="password"> 
+        <div *ngIf="(this.loginForm.get('password')?.touched||this.loginForm.get('password')?.dirty)&&this.loginForm.get('password')?.errors" class="valerror form-text"  style="color: red;">Invalid password</div>
+        <input type="submit" value="Sign in" onclick="login()">
+       
+    </form>
+</div>
+

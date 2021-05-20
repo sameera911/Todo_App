@@ -1,0 +1,88 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+    <div class="container-fluid">
+
+        <a (click)="gotoLogin()" style="cursor: pointer;">
+            <h5 style="color: white;">Login</h5>
+        </a>
+    </div>
+</nav>
+
+
+<div class="containers">
+    <div class="row">
+        <div class="col-lg-4 col-sm-12">
+
+        </div>
+
+
+        <div class="col-lg-4 col-sm-12 ">
+
+            <div class="contact-form">
+
+                <h2>Registration Form</h2>
+                <form [formGroup]="registerForm" (ngSubmit)="userRegister()">
+
+                    <p>Full Name</p><input placeholder="Enter  your name" type="text" formControlName="custName"
+                        name="custName">
+                    <div *ngIf="(this.registerForm.get('custName')?.touched||this.registerForm.get('custName')?.dirty)
+                    &&this.registerForm.get('custName')?.errors" class="valerror form-text" style="color: red;">
+                        Invalid Name</div>
+
+                    <p>Username</p><input placeholder="Enter Username" type="text" formControlName="userName"
+                        name="userName">
+                    <div *ngIf="(this.registerForm.get('userName')?.touched||this.registerForm.get('userName')?.dirty)
+                    &&this.registerForm.get('userName')?.errors" class="valerror form-text" style="color: red;">
+                        Invalid username</div>
+
+                    <p>Password</p><input placeholder="Enter Password" type="password" formControlName="password"
+                        name="password">
+                    <div *ngIf="(this.registerForm.get('password')?.touched||this.registerForm.get('password')?.dirty)
+                    &&this.registerForm.get('password')?.errors" class="valerror form-text" style="color: red;">
+                        Invalid password</div>
+
+                    <p>Gender</p><select name="gender" id="gender" formControlName="gender">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Others">Others</option>
+                    </select>
+                    <div *ngIf="(this.registerForm.get('gender')?.touched)
+                    &&this.registerForm.get('gender')?.errors" class="valerror form-text" style="color: red;">
+                        Select a gender</div>
+
+                    <p>Date of birth</p><input placeholder="Enter your date of birth" type="date" formControlName="dob"
+                        name="dob">
+                    <div *ngIf="(this.registerForm.get('dob')?.touched||this.registerForm.get('dob')?.dirty)
+                    &&this.registerForm.get('dob')?.errors" class="valerror form-text" style="color: red;">Invalid
+                        date of birth</div>
+
+
+                    <p>Address</p><input placeholder="Enter address" type="text" formControlName="address"
+                        name="address">
+                    <div *ngIf="(this.registerForm.get('address')?.touched||this.registerForm.get('address')?.dirty)
+                    &&this.registerForm.get('address')?.errors" class="valerror form-text" style="color: red;">
+                        Invalid address</div>
+
+                    <p>Phone Number</p><input placeholder="Enter Phonenummber" type="text" formControlName="phoneNo"
+                        name="phoneNo">
+                    <div *ngIf="(this.registerForm.get('phoneNo')?.touched||this.registerForm.get('phoneNo')?.dirty)
+                    &&this.registerForm.get('phoneNo')?.errors" class="valerror form-text" style="color: red;">
+                        Invalid Phone nummber</div>
+
+                    <p>Email</p><input placeholder="Enter email id" type="email" formControlName="email" name="email">
+                    <div *ngIf="(this.registerForm.get('email')?.touched||this.registerForm.get('email')?.dirty)
+                    &&this.registerForm.get('email')?.errors" class="valerror form-text" style="color: red;">
+                        Invalid Phone nummber</div>
+                    <input type="submit" value="Register">
+                    <!-- <p><input type="checkbox">Remember Me</p> -->
+                </form>
+            </div>
+
+
+        </div>
+        <div class="col-lg-4 col-sm-12">
+
+        </div>
+    </div>
+
+</div>
